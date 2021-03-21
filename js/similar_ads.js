@@ -4,6 +4,11 @@ const similarListElement = document.querySelector('#map-canvas');
 
 const similarAdsTemplate = document.querySelector('#card').content.querySelector('.popup');
 
+const photoListAds = similarAdsTemplate.querySelector('.popup__photos').querySelector('img');
+
+
+console.log(photoListAds);
+
 const similarAds = createOffersNearby();
 
 const getOfferTipe = (offerType) => {
@@ -28,6 +33,14 @@ const getOfferTipe = (offerType) => {
   return type;
 }
 
+const fragment = document.createDocumentFragment();
+
+similarAds.offer.photos.forEach (() => {
+  photoListAds.src = similarAds.offer.photos;
+});
+
+
+
 similarAdsTemplate.querySelector('.popup__title')
 .textContent = similarAds.offer.title;
 
@@ -45,6 +58,14 @@ similarAdsTemplate.querySelector('.popup__text--capacity')
 
 similarAdsTemplate.querySelector('.popup__text--time')
 .textContent = 'Заезд после ' + similarAds.offer.checkin + ', выезд до ' + similarAds.offer.checkout;
+
+similarAdsTemplate.querySelector('.popup__description')
+.textContent = similarAds.offer.description;
+
+similarAdsTemplate.querySelector('.popup__avatar')
+.src = similarAds.author.avatar;
+
+similarListElement.appendChild(similarAdsTemplate);
 
 console.log(similarAdsTemplate);
 console.log(createOffersNearby());
