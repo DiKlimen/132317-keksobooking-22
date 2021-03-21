@@ -7,8 +7,6 @@ const similarAdsTemplate = document.querySelector('#card').content.querySelector
 const photoListAds = similarAdsTemplate.querySelector('.popup__photos').querySelector('img');
 
 
-console.log(photoListAds);
-
 const similarAds = createOffersNearby();
 
 const getOfferTipe = (offerType) => {
@@ -39,6 +37,22 @@ similarAds.offer.photos.forEach (() => {
   photoListAds.src = similarAds.offer.photos;
 });
 
+const generateFeature = (features) => {
+  const featureList = document.querySelector('.popup__features');
+
+  if (features.length === 0) {
+    featureList.setAttribute('hidden')
+  }
+
+  console.log(featureList);
+
+  features.map((feature) => {
+    return featureList.appendChild(`<li class="popup__feature popup__feature--${feature}"></li>`);
+  });
+};
+
+
+
 
 
 similarAdsTemplate.querySelector('.popup__title')
@@ -58,6 +72,8 @@ similarAdsTemplate.querySelector('.popup__text--capacity')
 
 similarAdsTemplate.querySelector('.popup__text--time')
 .textContent = 'Заезд после ' + similarAds.offer.checkin + ', выезд до ' + similarAds.offer.checkout;
+
+similarAdsTemplate.querySelector('.popup__feature').appendChild(`<li class="popup__feature popup__feature--${feature}"></li>`);
 
 similarAdsTemplate.querySelector('.popup__description')
 .textContent = similarAds.offer.description;
