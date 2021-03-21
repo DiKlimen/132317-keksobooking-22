@@ -74,3 +74,5 @@ const createOffersNearby = () => {
     },
   };
 };
+
+export {createOffersNearby};
