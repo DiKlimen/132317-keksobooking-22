@@ -45,6 +45,8 @@ const getRandomArray = (array) => {
   return getRandomTrimArray(shuffle(array));
 }
 
+const SIMILAR_NEARBY_COUNT = 2;
+
 // eslint-disable-next-line no-unused-vars
 const createOffersNearby = () => {
 
@@ -75,4 +77,6 @@ const createOffersNearby = () => {
   };
 };
 
-export {createOffersNearby};
+const offersNearby = () => new Array(SIMILAR_NEARBY_COUNT).fill(null).map(() => createOffersNearby());
+
+export {offersNearby};
