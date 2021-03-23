@@ -20,17 +20,6 @@ const getRuType = (engType) => {
   return ruOfferType;
 };
 
-const generateFeature = (features) => {
-  const featureList = document.querySelector('.popup__features');
-
-  if (features.length === 0) {
-    featureList.setAttribute('hidden')
-  }
-
-  features.map((feature) => {
-    return featureList.appendChild(`<li class="popup__feature popup__feature--${feature}"></li>`);
-  });
-};
 
 similarAds.forEach((flat) => {
   const flatElement = similarAdsTemplate.cloneNode(true);
@@ -42,6 +31,20 @@ similarAds.forEach((flat) => {
   .textContent = flat.offer.rooms + ' комнаты для ' + flat.offer.guests + ' гостей';
   flatElement.querySelector('.popup__text--time')
   .textContent = 'Заезд после ' + flat.offer.checkin + ', выезд до ' + flat.offer.checkout;
+
+  const featuresArray = flat.offer.features
+
+  const generateFeature = (featuresArray) => {
+    const featureList = document.querySelector('.popup__features');
+
+    if (featuresArray.length === 0) {
+      featureList.setAttribute('hidden')
+    }
+
+    featuresArray.map((feature) => {
+      return featureList.appendChild(`<li class="popup__feature popup__feature--${feature}"></li>`);
+    });
+  };
 
   similarListElement.appendChild(flatElement);
 });
