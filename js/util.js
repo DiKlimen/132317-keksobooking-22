@@ -45,7 +45,7 @@ const getRandomArray = (array) => {
   return getRandomTrimArray(shuffle(array));
 }
 
-const SIMILAR_NEARBY_COUNT = 2;
+const SIMILAR_NEARBY_COUNT = 1;
 
 // eslint-disable-next-line no-unused-vars
 const createOffersNearby = () => {

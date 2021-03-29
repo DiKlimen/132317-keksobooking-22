@@ -34,6 +34,8 @@ similarAds.forEach((flat) => {
 
   const featureList = flatElement.querySelector('.popup__features');
 
+  console.log(flat.offer.features);
+
   const generateFeature = (featuresArray) => {
     featureList.innerHTML = ' ';
 
@@ -41,7 +43,8 @@ similarAds.forEach((flat) => {
       featureList.setAttribute('hidden');
     }
 
-    featuresArray.map((feature) => {
+   featuresArray.map((feature) => {
+     console.log(feature);
       return featureList.insertAdjacentHTML('beforeend', `<li class="popup__feature popup__feature--${feature}"></li>`);
     });
   };
