@@ -32,19 +32,21 @@ similarAds.forEach((flat) => {
   flatElement.querySelector('.popup__text--time')
   .textContent = 'Заезд после ' + flat.offer.checkin + ', выезд до ' + flat.offer.checkout;
 
-  const featuresArray = flat.offer.features
+  const featureList = flatElement.querySelector('.popup__features');
 
   const generateFeature = (featuresArray) => {
-    const featureList = document.querySelector('.popup__features');
+    featureList.innerHTML = ' ';
 
     if (featuresArray.length === 0) {
-      featureList.setAttribute('hidden')
+      featureList.setAttribute('hidden');
     }
 
     featuresArray.map((feature) => {
-      return featureList.appendChild(`<li class="popup__feature popup__feature--${feature}"></li>`);
+      return featureList.insertAdjacentHTML('beforeend', `<li class="popup__feature popup__feature--${feature}"></li>`);
     });
   };
+
+  generateFeature(flat.offer.features);
 
   similarListElement.appendChild(flatElement);
 });
